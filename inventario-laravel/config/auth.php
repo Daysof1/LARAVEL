@@ -1,5 +1,7 @@
 <?php
 
+use APP\Models\User;
+
 return [
 
     /*
