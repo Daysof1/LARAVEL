@@ -13,8 +13,8 @@ Route::middleware(['auth:sanctum'])->group(function () {
     Route::get('/me', [ApiAuthController::class, 'me']);
     Route::post('/logout', [ApiAuthController::class, 'logout']);
 
-    Route::apiResourse('categorias', CategoriaController::class);
-    Route::apiResourse('subcategorias', SubcategoriaController::class);
-    Route::apiResourse('productos', ProductoController::class);
-    Route::apiResourse('usuarios', UserController::class);
+    Route::apiResource('categorias', CategoriaController::class);
+    Route::apiResource('subcategorias', SubcategoriaController::class);
+    Route::apiResource('productos', ProductoController::class);
+    Route::apiResource('usuarios', UserController::class);
 });

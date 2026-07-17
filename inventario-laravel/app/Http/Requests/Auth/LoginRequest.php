@@ -12,9 +12,7 @@ use Illuminate\Validation\ValidationException;
 class LoginRequest extends FormRequest
 {
     /**
-     * Reqest para manejar el proceso de autenticacion del usuario en app
-     * Valida los fatos enviados, atentica el usuario y controla
-     * los intentos repetitivos para evitar ataques de fuerza bruta
+     * Determine if the user is authorized to make this request.
      */
     public function authorize(): bool
     {

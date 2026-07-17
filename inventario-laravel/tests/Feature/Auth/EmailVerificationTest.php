@@ -8,6 +8,15 @@ use Illuminate\Support\Facades\URL;
 test('email can be verified', function () {
     $user = User::factory()->unverified()->create();
 
+    $response = $this->actingAs($user)->get('/verify-email');
+
+    $response->assertStatus(200);
+
+});
+
+test('email can be verified', function () {
+    $user = User::factory()->unverified()->create();
+
     Event::fake();
 
     $verificationUrl = URL::temporarySignedRoute(
@@ -20,10 +29,11 @@ test('email can be verified', function () {
 
     Event::assertDispatched(Verified::class);
     expect($user->fresh()->hasVerifiedEmail())->toBeTrue();
-    $response->assertRedirect(config('app.frontend_url').'/dashboard?verified=1');
+    $response->assertRedirect(Route('dashboard', absolute: false). '?verified=1');
 });
 
-test('email is not verified with invalid hash', function () {
+
+test('email is not veried with inavlid hash', function() {
     $user = User::factory()->unverified()->create();
 
     $verificationUrl = URL::temporarySignedRoute(
