@@ -13,11 +13,11 @@ test('users can authenticate using the login screen', function () {
 
     $response = $this->post('/login', [
         'email' => $user->email,
-        'password' => 'wrong-password',
+        'password' => 'password',
     ]);
 
     $this->assertAuthenticated();
-    $response->assertRedirect('/dashboard', absolute: false);
+    $response->assertNoContent();
 
 });
 
@@ -39,5 +39,5 @@ test('user can logout', function() {
     $response = $this->actingAs($user)->post('/logout');
 
     $this->assertGuest();
-    $response->assertRedirect('/');
+    $response->assertNoContent();
 });

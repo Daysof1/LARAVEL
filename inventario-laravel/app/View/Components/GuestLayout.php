@@ -12,7 +12,7 @@ use Illuminate\View\View;
 
 class GuestLayout extends Component
 {
-    public function redenr():View
+    public function render(): View
     {
         return view('layouts.guest');
     }
